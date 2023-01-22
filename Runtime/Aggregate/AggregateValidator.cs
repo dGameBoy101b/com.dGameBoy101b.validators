@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace dGameBoy101b.Validators
 {
-	public abstract class AggregateValidator : ValidatorBase
+	public abstract class AggregateValidator : Validator
 	{
 		[SerializeField]
 		[Tooltip("The validators this aggregates")]
-		public List<ValidatorBase> Validators = new List<ValidatorBase>();
+		public List<Validator> Validators = new List<Validator>();
 	}
 }

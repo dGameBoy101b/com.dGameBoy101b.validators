@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added 
 
- - ValidatorBase: An abstract base class for all validators.
+ - Validator: An abstract base class for all validators.
  - TrueValidator: A validator that is always true.
  - FalseValidator: A validator that is always false.
  - AggregateValidator: An abstract base class for validators that draw input from multiple validators.

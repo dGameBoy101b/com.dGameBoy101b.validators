@@ -1,6 +1,6 @@
 ﻿namespace dGameBoy101b.Validators
 {
-	public sealed class TrueValidator : ValidatorBase
+	public sealed class TrueValidator : Validator
 	{
 		public override bool CheckValidity()
 		{

@@ -2,7 +2,7 @@
 
 namespace dGameBoy101b.Validators
 {
-	public sealed class DelayedValidator : ValidatorBase
+	public sealed class DelayedValidator : Validator
 	{
 		[SerializeField]
 		[Tooltip("The number of seconds between the source validator passing and this passing")]
@@ -20,7 +20,7 @@ namespace dGameBoy101b.Validators
 
 		[SerializeField]
 		[Tooltip("The validator whose validity will be delayed")]
-		private ValidatorBase SourceValidator;
+		private Validator SourceValidator;
 
 		public float LastChange { get; private set; }
 

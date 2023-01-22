@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace dGameBoy101b.Validators
 {
-	public class TouchValidator : ValidatorBase
+	public class TouchValidator : Validator
 	{
 		[SerializeField]
 		[Tooltip("The layer mask used to filter touching colliders")]

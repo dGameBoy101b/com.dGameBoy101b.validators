@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace dGameBoy101b.Validators
 {
-	public class RaycastValidator : ValidatorBase
+	public class RaycastValidator : Validator
 	{
 		[SerializeField]
 		[Tooltip("The maximum distance to raycast")]

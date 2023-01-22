@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace dGameBoy101b.Validators
 {
-	public sealed class InverseValidator : ValidatorBase
+	public sealed class InverseValidator : Validator
 	{
 		[SerializeField]
 		[Tooltip("The validator to invert")]
-		public ValidatorBase Validator = null;
+		public Validator Validator = null;
 
 		public override bool CheckValidity()
 		{

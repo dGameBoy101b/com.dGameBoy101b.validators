@@ -1,7 +1,7 @@
 namespace dGameBoy101b.Validators
 {
 	[System.Serializable]
-	public class PassthroughValidator : ValidatorBase
+	public class PassthroughValidator : Validator
 	{
 		public bool IsValid { get; set; }
 
