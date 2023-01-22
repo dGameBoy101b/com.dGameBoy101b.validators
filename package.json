@@ -1,0 +1,13 @@
+{
+	"name": "com.dgameboy101b.validators",
+	"version": "0.0.0",
+	"description": "An extendable collection of small event-based scripts for checking game state.",
+	"displayName": "Validators",
+	"unity": "2021.3",
+	"author": {
+		"name": "dGameBoy101b"
+	},
+	"keywords": [
+		"validators"
+	]
+}

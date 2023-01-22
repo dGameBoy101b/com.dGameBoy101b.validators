@@ -1,0 +1,14 @@
+{
+    "name": "dGameBoy101b.Validators",
+    "rootNamespace": "dGameBoy101b.Validators",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
