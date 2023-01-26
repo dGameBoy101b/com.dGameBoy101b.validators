@@ -29,31 +29,43 @@ namespace dGameBoy101b.Validators.PlayTests
 		[UnityTest]
 		public IEnumerator SwitchesToTrueAfterPassDelay()
 		{
-			const float PASS_DELAY = 1f;
+			const float TOLERANCE = .01f;
+			const float PASS_DELAY = 1;
 			this.validator.PassDelay = PASS_DELAY;
 			this.input.IsValid = false;
 			yield return null;
 			Assert.IsFalse(this.validator.CheckValidity());
 			this.input.IsValid = true;
-			yield return new WaitForSeconds(PASS_DELAY / 2f);
+			yield return null;
 			Assert.IsFalse(this.validator.CheckValidity());
-			yield return new WaitForSeconds(PASS_DELAY / 2f);
-			Assert.IsTrue(this.validator.CheckValidity());
+			float time = 0;
+			while (!this.validator.CheckValidity())
+			{
+				yield return null;
+				time += Time.deltaTime;
+			}
+			Assert.That(time, Is.EqualTo(PASS_DELAY).Within(TOLERANCE));
 		}
 
 		[UnityTest]
 		public IEnumerator SwitchesToFalseAfterFailDelay()
 		{
-			const float FAIL_DELAY = 1f;
+			const float TOLERANCE = .01f;
+			const float FAIL_DELAY = 1;
 			this.validator.FailDelay = FAIL_DELAY;
 			this.input.IsValid = true;
 			yield return null;
 			Assert.IsTrue(this.validator.CheckValidity());
 			this.input.IsValid = false;
-			yield return new WaitForSeconds(FAIL_DELAY / 2f);
+			yield return null;
 			Assert.IsTrue(this.validator.CheckValidity());
-			yield return new WaitForSeconds(FAIL_DELAY / 2f);
-			Assert.IsFalse(this.validator.CheckValidity());
+			float time = 0;
+			while (this.validator.CheckValidity())
+			{
+				yield return null;
+				time += Time.deltaTime;
+			}
+			Assert.That(time, Is.EqualTo(FAIL_DELAY).Within(TOLERANCE));
 		}
 	}
 }
