@@ -3,20 +3,27 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace dGameBoy101b.Validators.EditorTests
+namespace dGameBoy101b.Validators.PlayTests
 {
 	public class DelayedValidatorTests
 	{
 		private DelayedValidator validator;
 		private PassthroughValidator input;
+		private GameObject game_object;
 
 		[SetUp]
 		public void Setup()
 		{
-			var obj = new GameObject();
-			this.validator = obj.AddComponent<DelayedValidator>();
-			this.input = obj.AddComponent<PassthroughValidator>();
+			this.game_object = new GameObject();
+			this.validator = this.game_object.AddComponent<DelayedValidator>();
+			this.input = this.game_object.AddComponent<PassthroughValidator>();
 			this.validator.SourceValidator = this.input;
+		}
+
+		[TearDown]
+		public void Teardown()
+		{
+			Object.Destroy(this.game_object);
 		}
 
 		[UnityTest]

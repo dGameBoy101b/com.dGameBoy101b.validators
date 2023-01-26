@@ -1,17 +1,24 @@
 using NUnit.Framework;
 using UnityEngine;
 
-namespace dGameBoy101b.Validators.EditorTests
+namespace dGameBoy101b.Validators.PlayTests
 {
 	public class AllValidatorTests
 	{
 		private AllValidator validator;
+		private GameObject game_object;
 
 		[SetUp]
 		public void Setup()
 		{
-			var obj = new GameObject();
-			this.validator = obj.AddComponent<AllValidator>();
+			this.game_object = new GameObject();
+			this.validator = game_object.AddComponent<AllValidator>();
+		}
+
+		[TearDown]
+		public void Teardown()
+		{
+			Object.Destroy(this.game_object);
 		}
 
 		[Test]
@@ -23,8 +30,7 @@ namespace dGameBoy101b.Validators.EditorTests
 		[Test]
 		public void ReturnsFalseWithAllFalse()
 		{
-			var obj = new GameObject();
-			var input = obj.AddComponent<FalseValidator>();
+			var input = this.game_object.AddComponent<FalseValidator>();
 			this.validator.Validators.Add(input);
 			Assert.IsFalse(this.validator.CheckValidity());
 		}
@@ -32,8 +38,7 @@ namespace dGameBoy101b.Validators.EditorTests
 		[Test]
 		public void ReturnsTrueWithAllTrue()
 		{
-			var obj = new GameObject();
-			var input = obj.AddComponent<TrueValidator>();
+			var input = this.game_object.AddComponent<TrueValidator>();
 			this.validator.Validators.Add(input);
 			Assert.IsTrue(this.validator.CheckValidity());
 		}
@@ -41,9 +46,8 @@ namespace dGameBoy101b.Validators.EditorTests
 		[Test]
 		public void ReturnsFalseWithMixed()
 		{
-			var obj = new GameObject();
-			var true_val = obj.AddComponent<TrueValidator>();
-			var false_val = obj.AddComponent<FalseValidator>();
+			var true_val = this.game_object.AddComponent<TrueValidator>();
+			var false_val = this.game_object.AddComponent<FalseValidator>();
 			this.validator.Validators.Add(true_val);
 			this.validator.Validators.Add(false_val);
 			Assert.IsFalse(this.validator.CheckValidity());

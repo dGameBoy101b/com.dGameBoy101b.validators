@@ -1,17 +1,24 @@
 using NUnit.Framework;
 using UnityEngine;
 
-namespace dGameBoy101b.Validators.EditorTests
+namespace dGameBoy101b.Validators.PlayTests
 {
 	public class InverseValidatorTests
 	{
 		private InverseValidator validator;
+		private GameObject game_object;
 
 		[SetUp]
 		public void Setup()
 		{
-			var obj = new GameObject();
-			this.validator = obj.AddComponent<InverseValidator>();
+			this.game_object = new GameObject();
+			this.validator = this.game_object.AddComponent<InverseValidator>();
+		}
+
+		[TearDown]
+		public void Teardown()
+		{
+			Object.Destroy(this.game_object);
 		}
 
 		[Test]
