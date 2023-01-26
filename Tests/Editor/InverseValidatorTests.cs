@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using UnityEngine;
 
 namespace dGameBoy101b.Validators.EditorTests
 {
@@ -9,20 +10,23 @@ namespace dGameBoy101b.Validators.EditorTests
 		[SetUp]
 		public void Setup()
 		{
-			this.validator = new InverseValidator();
+			var obj = new GameObject();
+			this.validator = obj.AddComponent<InverseValidator>();
 		}
 
 		[Test]
 		public void ReturnsFalseWhenInputTrue()
 		{
-			this.validator.Validator = new TrueValidator();
+			var obj = new GameObject();
+			this.validator.Validator = obj.AddComponent<TrueValidator>();
 			Assert.IsFalse(this.validator.CheckValidity());
 		}
 
 		[Test]
 		public void ReturnsTrueWhenInputFalse()
 		{
-			this.validator.Validator = new FalseValidator();
+			var obj = new GameObject();
+			this.validator.Validator = obj.AddComponent<FalseValidator>();
 			Assert.IsTrue(this.validator.CheckValidity());
 		}
 	}

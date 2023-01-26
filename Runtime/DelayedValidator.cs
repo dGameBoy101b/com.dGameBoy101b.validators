@@ -20,7 +20,7 @@ namespace dGameBoy101b.Validators
 
 		[SerializeField]
 		[Tooltip("The validator whose validity will be delayed")]
-		private Validator SourceValidator;
+		public Validator SourceValidator;
 
 		public float LastChange { get; private set; }
 
@@ -28,13 +28,15 @@ namespace dGameBoy101b.Validators
 
 		public override bool CheckValidity()
 		{
-			return (Time.time - this.LastChange) < (this.HadPassed ? this.PassDelay : this.FailDelay) ^ this.HadPassed;
+			var target_delay = this.HadPassed ? this.PassDelay : this.FailDelay;
+			var current_delay = Time.time - this.LastChange;
+			return (current_delay < target_delay) ^ this.HadPassed;
 		}
 
 		private void UpdateValidity()
 		{
 			bool has_passed = this.SourceValidator.CheckValidity();
-			if (this.HadPassed ^ !has_passed)
+			if (this.HadPassed == has_passed)
 				return;
 			this.LastChange = Time.time;
 			this.HadPassed = has_passed;

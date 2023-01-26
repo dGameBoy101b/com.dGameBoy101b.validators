@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using UnityEngine;
 
 namespace dGameBoy101b.Validators.EditorTests
 {
@@ -9,7 +10,8 @@ namespace dGameBoy101b.Validators.EditorTests
 		[SetUp]
 		public void Setup()
 		{
-			this.validator = new FalseValidator();
+			var obj = new GameObject();
+			this.validator = obj.AddComponent<FalseValidator>();
 		}
 
 		[Test]
